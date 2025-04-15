@@ -7,6 +7,42 @@ title: Multiple Parson's Problems on One Page
 ---
 # Parsons Practice
 
+<div id="Esthers Code-sortableTrash" class="sortable-code"></div> 
+<div id="Esthers Code-sortable" class="sortable-code"></div> 
+<div style="clear:both;"></div> 
+<p> 
+    <input id="Esthers Code-feedbackLink" value="Get Feedback" type="button" /> 
+    <input id="Esthers Code-newInstanceLink" value="Reset Problem" type="button" /> 
+</p> 
+<script type="text/javascript"> 
+(function(){
+  var initial = "print(&quot;Esther&quot;)\n" +
+    "print(&quot;Parnes&quot;)\n" +
+    "print(&quot;teaches&quot;)";
+  var parsonsPuzzle = new ParsonsWidget({
+    "sortableId": "Esthers Code-sortable",
+    "max_wrong_lines": 10,
+    "grader": ParsonsWidget._graders.LineBasedGrader,
+    "exec_limit": 2500,
+    "can_indent": true,
+    "x_indent": 50,
+    "lang": "en",
+    "show_feedback": true
+  });
+  parsonsPuzzle.init(initial);
+  parsonsPuzzle.shuffleLines();
+  $("#Esthers Code-newInstanceLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.shuffleLines(); 
+  }); 
+  $("#Esthers Code-feedbackLink").click(function(event){ 
+      event.preventDefault(); 
+      parsonsPuzzle.getFeedback(); 
+  }); 
+})(); 
+</script>
+
+
 ## Parsons 1 (Line Based Grader)
 Re-arrange the blocks below so they print out "Hello World!"
 
